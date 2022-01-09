@@ -1,7 +1,9 @@
-name: Node.js CI
+name: node / typescript deliberate practice - PR 
 
-on: [push]
-
+on:
+  pull_request:
+    branches: [master]
+    
 jobs:
   build:
 
