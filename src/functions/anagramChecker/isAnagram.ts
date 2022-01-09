@@ -11,10 +11,10 @@ export function isAnagram(string1, string2) {
     let str2 = string2.split('').sort().join('');
 
     if (str1 === str2) {
-        console.log("true")
+        console.log(`${string1} and ${string2} are anagrams`)
         return true
     } else {
-        console.log("false")
+        console.log(`${string1} and ${string2} are not anagrams`)
         return false
     }
 }
