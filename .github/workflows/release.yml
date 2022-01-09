@@ -18,3 +18,17 @@ jobs:
     - run: npm run build --if-present
       env:
         CI: true
+
+    - name: get latest release with tag
+      id: latestrelease
+      run: |
+        echo "RELEASE_TAG=$(curl -s --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/JakeWalker23/node-typescript-deliberate-practice/releases/latest | jq '.tag_name' | sed 's/\"//g')" >> $GITHUB_ENV
+    
+    - name: confirm release tag
+      run: |
+        echo ${{ env.RELEASE_TAG }}
+    
+    - name: checkout code with latest release tag
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ env.RELEASE_TAG }}
