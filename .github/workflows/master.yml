@@ -16,5 +16,15 @@ jobs:
     - run: npm run lint --if-present
     - run: npm test
     - run: npm run build --if-present
+    - name: Bump version and push tag
+      id: version-bump
+      uses: anothrNick/github-tag-action@1.26.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        WITH_V: true
+        RELEASE_BRANCHES: master
+        DEFAULT_BUMP: patch
+      
       env:
         CI: true
+  
